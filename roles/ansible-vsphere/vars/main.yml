@@ -1,0 +1,20 @@
+---
+vcenter_name: vcenter.medfusion.local
+vcenter_login: MF\srussell
+vcenter_password: t1pp1CAn$e08
+guestname: d3-test02
+guest_id: rhel7_64Guest
+folder: DEV
+vm_state: present
+disk1gb: 20
+datastore: dev_vmdk_ds01
+network: DEVServers
+memory_mb: 4096
+num_cpus: 2
+osid: Red Hat Enterprise Linux 7 (64-bit)
+ip_address: 172.18.82.118
+netmask: 255.255.255.0
+gateway: 172.18.82.254
+domain: medfusion.net,medfusion.local
+dns_server1: 172.18.81.52
+dns_server2: 172.18.81.53

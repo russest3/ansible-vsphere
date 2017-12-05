@@ -1,0 +1,38 @@
+---
+- name: Create a VM
+  vmware_guest:
+    hostname: "{{ vcenter_name }}"
+    username: "{{ vcenter_login }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: no
+    name: "{{ guestname }}"
+    guest_id: "{{ guest_id }}"
+    state: "{{ vm_state }}"
+    datacenter: "Cary Lab"
+#    cluster: "Westmere EVC Cluster"    
+    esxi_hostname: "cryesxi810c.medfusion.local"
+    disk:
+      - size_gb: "{{ disk1gb }}"
+        type: "thin"
+        datastore: "{{ datastore }}"
+        # VMs can be put into folders. The value given here is either the full path
+        # to the folder (e.g. production/customerA/lamp) or just the last component
+        # of the path (e.g. lamp):        
+    networks:
+    - name: "{{ network }}"
+      device_type: "vmxnet3"
+#      type: "static"
+#      ip: "{{ ip_address }}"
+#      netmask: "{{ netmask }}"
+#      gateway: "{{ gateway }}"
+#      domain: "{{ domain }}"
+#      dns_servers:
+#      - "{{ dns_server1 }}"
+#      - "{{ dns_server2 }}"
+    hardware:
+      memory_mb: "{{ memory_mb }}"
+      num_cpus: "{{ num_cpus }}"      
+      scsi: "paravirtual"      
+  delegate_to: localhost
+  register: new_vm
+  tags: always
